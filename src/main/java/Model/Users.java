@@ -13,6 +13,10 @@ public class Users {
     }
 
     public String checkHashMap(String login) {
-        return hashMap.get(login);
-    }
+        if (hashMap.get(login) == null) {
+            return "error";
+        } else {
+            return hashMap.get(login);
+        }
+   }
 }
