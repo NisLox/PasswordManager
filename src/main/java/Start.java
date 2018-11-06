@@ -1,3 +1,4 @@
+import ViewModel.MainViewModel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,9 +13,10 @@ public class Start extends Application {
     private Button button = new Button();
     private TextField login = new TextField();
     private TextField password = new TextField();
+
     private Scene scene;
 
-    private Users users;
+    private MainViewModel mainViewModel;
 
     public static void main(String[] args) {
         launch(args);
@@ -24,9 +26,10 @@ public class Start extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Password Manager");
 
+        mainViewModel = new MainViewModel();
+
         GridPane gridPane = new GridPane();
         scene = new Scene(gridPane);
-        users = new Users();
 
         Label loginText = new Label("Login: ");
         Label passwordText = new Label("Password: ");
@@ -47,10 +50,8 @@ public class Start extends Application {
     }
 
     private void loginAction() {
-        if (users.checkHashMap(login.getText()) != null
-                && users.checkHashMap(login.getText()).equals(password.getText())) {
-            System.out.println("Access granted");
-        }
+        mainViewModel.loginAction();
+
     }
 
     private void listenersAndBinds() {
@@ -60,7 +61,10 @@ public class Start extends Application {
                 loginAction();
             }
         });
-    }
 
+        login.textProperty().addListener((observable) -> mainViewModel.setLoginText(login.getText()));
+        password.textProperty().addListener((observable) -> mainViewModel.setPassWordText(password.getText()));
+
+    }
 
 }

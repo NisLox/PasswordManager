@@ -1,16 +1,18 @@
+package Model;
+
 import java.util.HashMap;
 
-class Users {
+public class Users {
 
     private HashMap<String, String> hashMap;
 
-    Users() {
+    public Users() {
         hashMap = new HashMap<>();
         hashMap.put("Will", "Password");
         hashMap.put("Lewis", "Password1");
     }
 
-    String checkHashMap(String login) {
+    public String checkHashMap(String login) {
         return hashMap.get(login);
     }
 }
