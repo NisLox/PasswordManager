@@ -79,25 +79,12 @@ public class Start extends Application {
         loginSuccess.bindBidirectional(mainViewModel.loginSuccess);
 
         loginSuccess.addListener((observable, oldValue, newValue) -> {
-//            try {
-//                scene = new Scene(FXMLLoader.load(getClass().getResource("passwordManager.fxml")));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-            primaryStage.setScene(scene);
-
-            Parent root = null;
             try {
-                root = FXMLLoader.load(getClass().getResource("passwordManager.fxml"));
+                scene = new Scene(FXMLLoader.load(getClass().getResource("passwordManager.fxml")));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            Scene scene = new Scene(root, 300, 275);
-
-            primaryStage.setTitle("FXML Welcome");
             primaryStage.setScene(scene);
-            primaryStage.show();
         });
 
     }
