@@ -1,3 +1,5 @@
+import Model.Services.DialogService;
+import Model.Services.IDialogService;
 import View.PasswordManager;
 import ViewModel.MainViewModel;
 import javafx.application.Application;
@@ -15,7 +17,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class Start extends Application {
 
@@ -27,6 +28,7 @@ public class Start extends Application {
     private Stage primaryStage;
 
     private MainViewModel mainViewModel;
+    private IDialogService dialogService = new DialogService();
 
     private BooleanProperty loginSuccess = new SimpleBooleanProperty(false);
 
@@ -79,12 +81,8 @@ public class Start extends Application {
         loginSuccess.bindBidirectional(mainViewModel.loginSuccess);
 
         loginSuccess.addListener((observable, oldValue, newValue) -> {
-            try {
-                scene = new Scene(FXMLLoader.load(getClass().getResource("passwordManager.fxml")));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            primaryStage.setScene(scene);
+            dialogService.openPasswordManager();
+            
         });
 
     }
