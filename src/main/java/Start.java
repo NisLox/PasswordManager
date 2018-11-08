@@ -24,6 +24,7 @@ public class Start extends Application {
     private TextField login = new TextField();
     private TextField password = new TextField();
     private GridPane gridPane = new GridPane();
+    private Button addUserButton = new Button();
     private Scene scene;
     private Stage primaryStage;
 
@@ -60,8 +61,10 @@ public class Start extends Application {
         gridPane.add(login, 2,1);
         gridPane.add(password, 2,2);
         gridPane.add(button, 2,3);
+        gridPane.add(addUserButton,3,3);
 
         button.setText("Log in");
+        addUserButton.setText("Add user");
     }
 
     private void loginAction() {
@@ -70,6 +73,7 @@ public class Start extends Application {
 
     private void listenersAndBinds() {
         button.setOnAction(actionEvent -> loginAction());
+        addUserButton.setOnAction(actionEvent -> addUserAction());
         scene.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)){
                 loginAction();
@@ -82,9 +86,12 @@ public class Start extends Application {
 
         loginSuccess.addListener((observable, oldValue, newValue) -> {
             dialogService.openPasswordManager();
-            
         });
 
+    }
+
+    private void addUserAction() {
+        dialogService.openAddUser();
     }
 
 }
