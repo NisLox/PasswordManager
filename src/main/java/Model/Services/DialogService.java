@@ -28,8 +28,9 @@ public class DialogService implements IDialogService {
     }
 
     @Override
-    public void openAddUser() {
+    public void openAddUser(Users users) {
         FXMLLoader fxmlLoader = new FXMLLoader();
+
         Pane rootPane;
         try {
             rootPane = fxmlLoader.load(getClass().getResource(

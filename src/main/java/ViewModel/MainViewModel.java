@@ -1,5 +1,7 @@
 package ViewModel;
 
+import Model.Services.DialogService;
+import Model.Services.IDialogService;
 import Model.Users;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -11,8 +13,10 @@ public class MainViewModel {
     private String loginText = "";
     private String passwordText = "";
     private Users users;
+    private DialogService dialogService;
 
-    public MainViewModel() {
+    public MainViewModel(IDialogService dialogService) {
+        this.dialogService = (DialogService) dialogService;
         users = new Users();
     }
 
@@ -48,4 +52,7 @@ public class MainViewModel {
         this.passwordText = passwordText;
     }
 
+    public void openAddUser() {
+        dialogService.openAddUser(users);
+    }
 }

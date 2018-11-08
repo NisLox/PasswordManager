@@ -1,13 +1,9 @@
 import Model.Services.DialogService;
 import Model.Services.IDialogService;
-import View.PasswordManager;
 import ViewModel.MainViewModel;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,8 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Start extends Application {
 
@@ -26,7 +20,6 @@ public class Start extends Application {
     private GridPane gridPane = new GridPane();
     private Button addUserButton = new Button();
     private Scene scene;
-    private Stage primaryStage;
 
     private MainViewModel mainViewModel;
     private IDialogService dialogService = new DialogService();
@@ -39,9 +32,8 @@ public class Start extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
         primaryStage.setTitle("Password Manager");
-        mainViewModel = new MainViewModel();
+        mainViewModel = new MainViewModel(dialogService);
         scene = new Scene(gridPane);
 
         populateStage();
@@ -71,14 +63,13 @@ public class Start extends Application {
         mainViewModel.loginAction();
     }
 
+    private void addUserAction() {
+        mainViewModel.openAddUser();
+    }
+
     private void listenersAndBinds() {
         button.setOnAction(actionEvent -> loginAction());
         addUserButton.setOnAction(actionEvent -> addUserAction());
-        scene.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)){
-                loginAction();
-            }
-        });
 
         login.textProperty().addListener((observable) -> mainViewModel.setLoginText(login.getText()));
         password.textProperty().addListener((observable) -> mainViewModel.setPasswordText(password.getText()));
@@ -88,10 +79,14 @@ public class Start extends Application {
             dialogService.openPasswordManager();
         });
 
+        scene.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)){
+                loginAction();
+            }
+        });
+
     }
 
-    private void addUserAction() {
-        dialogService.openAddUser();
-    }
+
 
 }

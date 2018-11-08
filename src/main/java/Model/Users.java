@@ -19,4 +19,8 @@ public class Users {
             return hashMap.get(login);
         }
    }
+
+    public void addUser() {
+        hashMap.put("Adam","Password");
+    }
 }
