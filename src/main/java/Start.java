@@ -1,9 +1,9 @@
+import View.PasswordManager;
 import ViewModel.MainViewModel;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class Start extends Application {
 
@@ -76,15 +77,27 @@ public class Start extends Application {
         login.textProperty().addListener((observable) -> mainViewModel.setLoginText(login.getText()));
         password.textProperty().addListener((observable) -> mainViewModel.setPasswordText(password.getText()));
         loginSuccess.bindBidirectional(mainViewModel.loginSuccess);
+
         loginSuccess.addListener((observable, oldValue, newValue) -> {
-            Parent root;
+//            try {
+//                scene = new Scene(FXMLLoader.load(getClass().getResource("passwordManager.fxml")));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+            primaryStage.setScene(scene);
+
+            Parent root = null;
             try {
                 root = FXMLLoader.load(getClass().getResource("passwordManager.fxml"));
-                scene = new Scene(root);
-                primaryStage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            Scene scene = new Scene(root, 300, 275);
+
+            primaryStage.setTitle("FXML Welcome");
+            primaryStage.setScene(scene);
+            primaryStage.show();
         });
 
     }

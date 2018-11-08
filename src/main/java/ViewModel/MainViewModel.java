@@ -22,6 +22,7 @@ public class MainViewModel {
             alert.setTitle("Invalid Username");
             alert.setContentText("Please try again");
             alert.showAndWait();
+            loginSuccess.setValue(false);
         } else {
             if (users.checkHashMap(loginText).equals(passwordText)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -37,7 +38,6 @@ public class MainViewModel {
                 loginSuccess.setValue(false);
             }
         }
-
     }
 
     public void setLoginText(String loginText) {
