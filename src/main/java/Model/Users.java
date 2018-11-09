@@ -20,7 +20,7 @@ public class Users {
         }
    }
 
-    public void addUser() {
-        hashMap.put("Adam","Password");
+    public void addUser(String value, String passwordValue) {
+        hashMap.put(value ,passwordValue);
     }
 }

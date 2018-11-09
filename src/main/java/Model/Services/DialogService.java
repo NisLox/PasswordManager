@@ -43,6 +43,6 @@ public class DialogService implements IDialogService {
         addUser.initData(users);
 
         stage.show();
-        
+
     }
 }
