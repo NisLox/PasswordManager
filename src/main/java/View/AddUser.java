@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AddUser {
 
@@ -37,7 +38,8 @@ public class AddUser {
     }
 
     private void cancelButtonAction(ActionEvent actionEvent) {
-        addUserViewModel.cancelButtonAction();
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
 

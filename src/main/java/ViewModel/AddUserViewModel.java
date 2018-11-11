@@ -21,7 +21,4 @@ public class AddUserViewModel {
 
     }
 
-    public void cancelButtonAction() {
-
-    }
 }
