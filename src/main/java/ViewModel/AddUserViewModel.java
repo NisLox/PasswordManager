@@ -1,9 +1,9 @@
 package ViewModel;
 
 import Model.Users;
+import Model.Helper.Alert;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.Alert;
 
 public class AddUserViewModel {
 
@@ -18,14 +18,10 @@ public class AddUserViewModel {
     public boolean okButtonAction() {
         if (!user.getValue().equals("") && !password.getValue().equals("")) {
             users.addUser(user.getValue(), password.getValue());
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Account Created");
-            alert.showAndWait();
+            Alert.showConfirmationAlert("Account Created", "Account has successfully been created");
             return true;
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Account Creation Failed");
-            alert.showAndWait();
+            Alert.showErrorAlert("Account Creation Failed", "Account has not been created, User already exists with that username");
             return false;
         }
 

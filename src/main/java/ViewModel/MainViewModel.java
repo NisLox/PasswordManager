@@ -3,9 +3,9 @@ package ViewModel;
 import Model.Services.DialogService;
 import Model.Services.IDialogService;
 import Model.Users;
+import Model.Helper.Alert;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.scene.control.Alert;
 
 public class MainViewModel {
 
@@ -22,23 +22,14 @@ public class MainViewModel {
 
     public void loginAction() {
         if (users.checkHashMap(loginText).equals("error")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Username");
-            alert.setContentText("Please try again");
-            alert.showAndWait();
+            Alert.showErrorAlert("Login Failed", "Unsuccessful login");
             loginSuccess.setValue(false);
         } else {
             if (users.checkHashMap(loginText).equals(passwordText)) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Access Granted");
-                alert.setContentText("Welcome");
-                alert.showAndWait();
+                Alert.showConfirmationAlert("Access Granted", "Welcome!");
                 loginSuccess.setValue(true);
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Failed");
-                alert.setContentText("Failed");
-                alert.showAndWait();
+                Alert.showErrorAlert("Error", "Error");
                 loginSuccess.setValue(false);
             }
         }
