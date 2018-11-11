@@ -21,6 +21,8 @@ public class AddUser {
 
     private AddUserViewModel addUserViewModel;
 
+    private Stage stage;
+
     public void initData(Users users) {
         addUserViewModel = new AddUserViewModel(users);
     }
@@ -31,14 +33,19 @@ public class AddUser {
 
         user.textProperty().addListener((observable, oldValue, newValue) -> addUserViewModel.user.setValue(newValue));
         password.textProperty().addListener((observable, oldValue, newValue) -> addUserViewModel.password.setValue(newValue));
+
+
     }
 
     private void okButtonAction(ActionEvent actionEvent) {
-        addUserViewModel.okButtonAction();
+       if (addUserViewModel.okButtonAction()) {
+           stage = (Stage) cancelButton.getScene().getWindow();
+           stage.close();
+       }
     }
 
     private void cancelButtonAction(ActionEvent actionEvent) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
 
