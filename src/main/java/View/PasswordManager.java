@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
-
 public class PasswordManager {
     @FXML
     public Button addButton;
@@ -22,29 +21,31 @@ public class PasswordManager {
     @FXML
     public Button testButton;
 
-    private Users users;
     private User user;
     private ArrayList<User> arrayOfUsers;
 
     public void initialize(){
-        addButton.setOnAction(this::addAction);
-        testButton.setOnAction(this::showWebsites);
+
+        addButton.setOnAction(e -> addAction());
+        testButton.setOnAction(e -> showWebsites());
     }
 
     public void initData(Users users) {
-        this.users = users;
         user = users.getUser();
         arrayOfUsers = users.getArrayOfUsers();
     }
 
-    private void showWebsites(ActionEvent actionEvent) {
+    private void showWebsites() {
         for (int i = 0; i < arrayOfUsers.get(0).getTableEntries().size(); i++) {
             System.out.println(user.getTableEntries().get(i));
         }
     }
 
-    private void addAction(ActionEvent actionEvent) {
+    private void addAction() {
         user.addWebsite(website.getText(), username.getText(), password.getText());
+        website.clear();
+        username.clear();
+        password.clear();
     }
 
 
