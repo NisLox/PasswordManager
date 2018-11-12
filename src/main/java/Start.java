@@ -20,6 +20,7 @@ public class Start extends Application {
     private GridPane gridPane = new GridPane();
     private Button addUserButton = new Button();
     private Scene scene;
+    private Stage stage;
 
     private MainViewModel mainViewModel;
     private IDialogService dialogService = new DialogService();
@@ -60,7 +61,10 @@ public class Start extends Application {
     }
 
     private void loginAction() {
-        mainViewModel.loginAction();
+        if (mainViewModel.loginAction()) {
+           stage = (Stage) button.getScene().getWindow();
+           stage.close();
+        }
     }
 
     private void addUserAction() {

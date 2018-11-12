@@ -23,4 +23,9 @@ public class Users {
     public void addUser(String value, String passwordValue) {
         hashMap.put(value ,passwordValue);
     }
+
+    public void removeUser(String username, String passwordValue ) {
+        if (hashMap.get(username).equals(passwordValue))
+            hashMap.remove(username);
+    }
 }

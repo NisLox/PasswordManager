@@ -20,17 +20,20 @@ public class MainViewModel {
         users = new Users();
     }
 
-    public void loginAction() {
+    public boolean loginAction() {
         if (users.checkHashMap(loginText).equals("error")) {
             Alert.showErrorAlert("Login Failed", "Unsuccessful login");
             loginSuccess.setValue(false);
+            return false;
         } else {
             if (users.checkHashMap(loginText).equals(passwordText)) {
                 Alert.showConfirmationAlert("Access Granted", "Welcome!");
                 loginSuccess.setValue(true);
+                return true;
             } else {
                 Alert.showErrorAlert("Error", "Error");
                 loginSuccess.setValue(false);
+                return false;
             }
         }
     }

@@ -25,7 +25,6 @@ public class DialogService implements IDialogService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -38,11 +37,9 @@ public class DialogService implements IDialogService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         AddUser addUser = fxmlLoader.getController();
         addUser.initData(users);
 
         stage.show();
-
     }
 }
