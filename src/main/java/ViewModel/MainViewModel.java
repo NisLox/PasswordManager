@@ -15,9 +15,9 @@ public class MainViewModel {
     private Users users;
     private DialogService dialogService;
 
-    public MainViewModel(IDialogService dialogService) {
+    public MainViewModel(IDialogService dialogService, Users users) {
         this.dialogService = (DialogService) dialogService;
-        users = new Users();
+        this.users = users;
     }
 
     public boolean loginAction() {

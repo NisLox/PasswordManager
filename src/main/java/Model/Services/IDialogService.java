@@ -4,7 +4,7 @@ import Model.Users;
 
 public interface IDialogService {
 
-    void openPasswordManager();
+    void openPasswordManager(Users users);
 
     void openAddUser(Users users);
 

@@ -1,15 +1,19 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Users {
 
     private HashMap<String, String> hashMap;
+    private User user;
+    private ArrayList<User> arrayOfUsers;
 
     public Users() {
         hashMap = new HashMap<>();
         hashMap.put("Will", "Password");
         hashMap.put("Lewis", "Password1");
+        arrayOfUsers = new ArrayList<>();
     }
 
     public String checkHashMap(String login) {
@@ -20,12 +24,27 @@ public class Users {
         }
    }
 
-    public void addUser(String value, String passwordValue) {
-        hashMap.put(value ,passwordValue);
+    public void addUser(String username, String passwordValue) {
+        user = new User(username, passwordValue);
+        hashMap.put(username ,passwordValue);
+        arrayOfUsers.add(user);
     }
 
-    public void removeUser(String username, String passwordValue ) {
-        if (hashMap.get(username).equals(passwordValue))
-            hashMap.remove(username);
+    public ArrayList<User> getArrayOfUsers() {
+        return arrayOfUsers;
     }
+
+
+    public User getUser() {
+        return user;
+    }
+
+
+
+
+
+
+
+
+
 }

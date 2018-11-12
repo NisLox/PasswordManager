@@ -1,5 +1,6 @@
 import Model.Services.DialogService;
 import Model.Services.IDialogService;
+import Model.Users;
 import ViewModel.MainViewModel;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
@@ -24,6 +25,7 @@ public class Start extends Application {
 
     private MainViewModel mainViewModel;
     private IDialogService dialogService = new DialogService();
+    private Users users;
 
     private BooleanProperty loginSuccess = new SimpleBooleanProperty(false);
 
@@ -34,7 +36,8 @@ public class Start extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Password Manager");
-        mainViewModel = new MainViewModel(dialogService);
+        users = new Users();
+        mainViewModel = new MainViewModel(dialogService, users);
         scene = new Scene(gridPane);
 
         populateStage();
@@ -80,7 +83,7 @@ public class Start extends Application {
         loginSuccess.bindBidirectional(mainViewModel.loginSuccess);
 
         loginSuccess.addListener((observable, oldValue, newValue) -> {
-            dialogService.openPasswordManager();
+            dialogService.openPasswordManager(users);
         });
 
         scene.setOnKeyPressed(event -> {
