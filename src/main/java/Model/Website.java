@@ -5,13 +5,13 @@ import javafx.beans.property.SimpleStringProperty;
 public class Website {
 
     private final SimpleStringProperty website;
-    private final SimpleStringProperty usernameOfWebsite;
-    private final SimpleStringProperty passwordOfWebsite;
+    private final SimpleStringProperty username;
+    private final SimpleStringProperty password;
 
     public Website(String websiteUrl, String usernameOfWebsite, String passwordOfWebsite) {
         this.website = new SimpleStringProperty(websiteUrl);
-        this.usernameOfWebsite = new SimpleStringProperty(usernameOfWebsite);
-        this.passwordOfWebsite = new SimpleStringProperty(passwordOfWebsite);
+        this.username = new SimpleStringProperty(usernameOfWebsite);
+        this.password = new SimpleStringProperty(passwordOfWebsite);
     }
 
     public String getWebsite() {
@@ -22,20 +22,20 @@ public class Website {
         this.website.set(website);
     }
 
-    public String getUsernameOfWebsite() {
-        return usernameOfWebsite.get();
+    public String getUsername() {
+        return username.get();
     }
 
-    public void setUsernameOfWebsite(String usernameOfWebsite) {
-        this.usernameOfWebsite.set(usernameOfWebsite);
+    public void setUsername(String username) {
+        this.username.set(username);
     }
 
-    public String getPasswordOfWebsite() {
-        return passwordOfWebsite.get();
+    public String getPassword() {
+        return password.get();
     }
 
-    public void setPasswordOfWebsite(String passwordOfWebsite) {
-        this.passwordOfWebsite.set(passwordOfWebsite);
+    public void setPassword(String password) {
+        this.password.set(password);
     }
 
 

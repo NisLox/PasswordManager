@@ -65,8 +65,8 @@ public class PasswordManager {
         passwordCol = new TableColumn("Password");
 
         websiteCol.setCellValueFactory(new PropertyValueFactory<Website,String>("Website"));
-        usernameCol.setCellValueFactory(new PropertyValueFactory<Website, String>("Username"));
-        passwordCol.setCellValueFactory(new PropertyValueFactory<Website, String>("Password"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<Website,String>("Username"));
+        passwordCol.setCellValueFactory(new PropertyValueFactory<Website,String>("Password"));
 
         tableView.getColumns().addAll(websiteCol,usernameCol,passwordCol);
     }
