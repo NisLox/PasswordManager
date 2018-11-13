@@ -9,10 +9,10 @@ public class Users {
     private User user;
     private ArrayList<User> arrayOfUsers;
 
+
     public Users() {
         hashMap = new HashMap<>();
         hashMap.put("Will", "Password");
-        hashMap.put("Lewis", "Password1");
         arrayOfUsers = new ArrayList<>();
     }
 
@@ -25,7 +25,7 @@ public class Users {
    }
 
     public void addUser(String username, String passwordValue) {
-        user = new User(username, passwordValue);
+        user = new User();
         hashMap.put(username ,passwordValue);
         arrayOfUsers.add(user);
     }

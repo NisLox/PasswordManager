@@ -1,23 +1,20 @@
 package Model;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class User {
 
-    private ArrayList<Website> tableEntries = new ArrayList<>();
 
-    public User(String username, String passwordValue) {
-
-    }
+    private final ObservableList<Website> data =
+            FXCollections.observableArrayList();
 
     public void addWebsite(String websiteUrl, String usernameOfWebsite, String passwordOfWebsite) {
-        Website website = new Website(websiteUrl, usernameOfWebsite, passwordOfWebsite);
-        tableEntries.add(website);
+        data.add(new Website(websiteUrl,usernameOfWebsite,passwordOfWebsite));
     }
 
-    public ArrayList<Website> getTableEntries() {
-        return tableEntries;
+    public ObservableList<Website> getData() {
+        return data;
     }
-
 
 }

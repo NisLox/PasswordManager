@@ -33,8 +33,6 @@ public class AddUser {
 
         user.textProperty().addListener((observable, oldValue, newValue) -> addUserViewModel.user.setValue(newValue));
         password.textProperty().addListener((observable, oldValue, newValue) -> addUserViewModel.password.setValue(newValue));
-
-
     }
 
     private void okButtonAction(ActionEvent actionEvent) {
@@ -48,6 +46,4 @@ public class AddUser {
         stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-
-
 }
