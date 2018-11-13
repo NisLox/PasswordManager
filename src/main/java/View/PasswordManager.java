@@ -1,5 +1,6 @@
 package View;
 
+import Model.Helper.Alert;
 import Model.User;
 import Model.Users;
 import Model.Website;
@@ -23,20 +24,13 @@ public class PasswordManager {
     @FXML
     public TextField password;
     @FXML
-    public Button testButton;
-    @FXML
     public TableView tableView;
-
-    private TableColumn websiteCol;
-    private TableColumn usernameCol;
-    private TableColumn passwordCol;
 
     private User user;
     private ArrayList<User> arrayOfUsers;
 
     public void initialize(){
         addButton.setOnAction(e -> addAction());
-        testButton.setOnAction(e -> showWebsites());
     }
 
     public void initData(Users users) {
@@ -52,22 +46,26 @@ public class PasswordManager {
     }
 
     private void addAction() {
-        user.addWebsite(website.getText(), username.getText(), password.getText());
-        website.clear();
-        username.clear();
-        password.clear();
-        tableView.setItems(user.getData());
+        if (website.getText().equals("") || username.getText().equals("") || username.getText().equals("")) {
+            Alert.showErrorAlert("Insufficient Data Entered", "Please complete all fields");
+        } else {
+            user.addWebsite(website.getText(), username.getText(), password.getText());
+            website.clear();
+            username.clear();
+            password.clear();
+            tableView.setItems(user.getData());
+        }
     }
 
     private void createHeaders() {
-        websiteCol = new TableColumn("Website");
-        usernameCol = new TableColumn("Username");
-        passwordCol = new TableColumn("Password");
+        TableColumn websiteCol = new TableColumn("Website");
+        TableColumn usernameCol = new TableColumn("Username");
+        TableColumn passwordCol = new TableColumn("Password");
 
         websiteCol.setCellValueFactory(new PropertyValueFactory<Website,String>("Website"));
         usernameCol.setCellValueFactory(new PropertyValueFactory<Website,String>("Username"));
         passwordCol.setCellValueFactory(new PropertyValueFactory<Website,String>("Password"));
 
-        tableView.getColumns().addAll(websiteCol,usernameCol,passwordCol);
+        tableView.getColumns().addAll(websiteCol, usernameCol, passwordCol);
     }
 }
