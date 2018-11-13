@@ -30,11 +30,6 @@ public class Users {
         arrayOfUsers.add(user);
     }
 
-    public ArrayList<User> getArrayOfUsers() {
-        return arrayOfUsers;
-    }
-
-
     public User getUser() {
         return user;
     }

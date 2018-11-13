@@ -27,7 +27,6 @@ public class PasswordManagerView {
     public TableView tableView;
 
     private User user;
-    private ArrayList<User> arrayOfUsers;
 
     public void initialize(){
         addButton.setOnAction(e -> addAction());
@@ -35,15 +34,9 @@ public class PasswordManagerView {
 
     public void initData(Users users) {
         user = users.getUser();
-        arrayOfUsers = users.getArrayOfUsers();
         createHeaders();
     }
 
-    private void showWebsites() {
-        for (int i = 0; i < arrayOfUsers.get(0).getData().size(); i++) {
-            System.out.println(user.getData().get(i));
-        }
-    }
 
     private void addAction() {
         if (website.getText().equals("") || username.getText().equals("") || username.getText().equals("")) {
