@@ -5,7 +5,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.AddUser"
+            fx:controller="View.AddUserView"
             prefHeight="400.0" prefWidth="600.0">
     <GridPane>
         <Label GridPane.rowIndex="1" GridPane.columnIndex="0"> Name </Label>

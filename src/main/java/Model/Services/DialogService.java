@@ -1,11 +1,10 @@
 package Model.Services;
 
 import Model.Users;
-import View.AddUser;
-import View.PasswordManager;
+import View.AddUserView;
+import View.PasswordManagerView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,7 +22,7 @@ public class DialogService implements IDialogService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        PasswordManager passwordManager = fxmlLoader.getController();
+        PasswordManagerView passwordManager = fxmlLoader.getController();
         passwordManager.initData(users);
         stage.show();
     }
@@ -38,7 +37,7 @@ public class DialogService implements IDialogService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        AddUser addUser = fxmlLoader.getController();
+        AddUserView addUser = fxmlLoader.getController();
         addUser.initData(users);
 
         stage.show();

@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
-public class PasswordManager {
+public class PasswordManagerView {
 
     @FXML
     public Button addButton;
