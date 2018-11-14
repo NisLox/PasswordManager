@@ -23,7 +23,7 @@ public class Users {
 
     public void addUser(String username, String passwordValue) {
         user = new User();
-        hashMap.put(username ,passwordValue);
+        hashMap.put(username, passwordValue);
     }
 
     public User getUser() {

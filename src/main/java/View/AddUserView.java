@@ -21,8 +21,6 @@ public class AddUserView {
 
     private AddUserViewModel addUserViewModel;
 
-    private Stage stage;
-
     public void initData(Users users) {
         addUserViewModel = new AddUserViewModel(users);
     }
@@ -46,7 +44,7 @@ public class AddUserView {
     }
 
     private void closeWindow() {
-        stage = (Stage) cancelButton.getScene().getWindow();
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
 }
