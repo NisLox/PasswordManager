@@ -16,11 +16,9 @@ public class MainView {
     @FXML
     private TextField login;
     @FXML
-    private Button button;
+    private Button button;  
     @FXML
     private Button addUserButton;
-
-    private Stage stage;
 
     private MainViewModel mainViewModel;
 
@@ -39,7 +37,7 @@ public class MainView {
 
     private void loginAction() {
         if (mainViewModel.loginAction()) {
-            stage = (Stage) button.getScene().getWindow();
+            Stage stage = (Stage) button.getScene().getWindow();
             stage.close();
         }
     }

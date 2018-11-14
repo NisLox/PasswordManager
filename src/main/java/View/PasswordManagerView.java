@@ -27,7 +27,7 @@ public class PasswordManagerView {
 
     private User user;
 
-    public void initialize(){
+    public void initialize() {
         addButton.setOnAction(e -> addAction());
     }
 
@@ -54,9 +54,9 @@ public class PasswordManagerView {
         TableColumn usernameCol = new TableColumn("Username");
         TableColumn passwordCol = new TableColumn("Password");
 
-        websiteCol.setCellValueFactory(new PropertyValueFactory<Website,String>("Website"));
-        usernameCol.setCellValueFactory(new PropertyValueFactory<Website,String>("Username"));
-        passwordCol.setCellValueFactory(new PropertyValueFactory<Website,String>("Password"));
+        websiteCol.setCellValueFactory(new PropertyValueFactory<Website, String>("Website"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<Website, String>("Username"));
+        passwordCol.setCellValueFactory(new PropertyValueFactory<Website, String>("Password"));
 
         tableView.getColumns().addAll(websiteCol, usernameCol, passwordCol);
     }
