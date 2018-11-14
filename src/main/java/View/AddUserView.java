@@ -28,21 +28,21 @@ public class AddUserView {
     }
 
     public void initialize(){
-        okButton.setOnAction(this::okButtonAction);
-        cancelButton.setOnAction(this::cancelButtonAction);
+        okButton.setOnAction(e -> okButtonAction());
+        cancelButton.setOnAction(e -> cancelButtonAction());
 
         user.textProperty().addListener((observable, oldValue, newValue) -> addUserViewModel.user.setValue(newValue));
         password.textProperty().addListener((observable, oldValue, newValue) -> addUserViewModel.password.setValue(newValue));
     }
 
-    private void okButtonAction(ActionEvent actionEvent) {
+    private void okButtonAction() {
        if (addUserViewModel.okButtonAction()) {
            stage = (Stage) cancelButton.getScene().getWindow();
            stage.close();
        }
     }
 
-    private void cancelButtonAction(ActionEvent actionEvent) {
+    private void cancelButtonAction() {
         stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
