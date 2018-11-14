@@ -37,12 +37,15 @@ public class AddUserView {
 
     private void okButtonAction() {
        if (addUserViewModel.okButtonAction()) {
-           stage = (Stage) cancelButton.getScene().getWindow();
-           stage.close();
+           closeWindow();
        }
     }
 
     private void cancelButtonAction() {
+        closeWindow();
+    }
+
+    private void closeWindow() {
         stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
