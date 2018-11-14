@@ -24,10 +24,8 @@ public class MainView {
     private Button addUserButton;
 
     private Stage stage;
-    private IDialogService dialogService;
 
     private MainViewModel mainViewModel;
-    private Users users;
 
     private BooleanProperty loginSuccess = new SimpleBooleanProperty(false);
 
@@ -35,10 +33,9 @@ public class MainView {
 
     }
 
-    public void initData(MainViewModel mainViewModel, IDialogService dialogService, Users users) {
+    public void initData(MainViewModel mainViewModel) {
         this.mainViewModel = mainViewModel;
-        this.dialogService = dialogService;
-        this.users = users;
+
 
         listenersAndBinds();
     }
@@ -63,7 +60,7 @@ public class MainView {
         loginSuccess.bindBidirectional(mainViewModel.loginSuccess);
 
         loginSuccess.addListener((observable, oldValue, newValue) -> {
-            dialogService.openPasswordManager(users);
+            mainViewModel.openPasswordManager();
         });
 
         button.getScene().setOnKeyPressed(event -> {

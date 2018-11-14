@@ -14,6 +14,7 @@ public class Start extends Application {
 
     private IDialogService dialogService = new DialogService();
     private Users users = new Users();
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -31,7 +32,7 @@ public class Start extends Application {
 
         MainView mainView = fxmlLoader.getController();
         MainViewModel mainViewModel = new MainViewModel(dialogService, users);
-        mainView.initData(mainViewModel, dialogService, users);
+        mainView.initData(mainViewModel);
 
         stage.show();
     }

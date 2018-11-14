@@ -49,4 +49,8 @@ public class MainViewModel {
     public void openAddUser() {
         dialogService.openAddUser(users);
     }
+
+    public void openPasswordManager() {
+        dialogService.openPasswordManager(users);
+    }
 }
