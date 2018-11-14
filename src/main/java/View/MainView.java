@@ -16,7 +16,7 @@ public class MainView {
     @FXML
     private TextField login;
     @FXML
-    private Button button;  
+    private Button button;
     @FXML
     private Button addUserButton;
 

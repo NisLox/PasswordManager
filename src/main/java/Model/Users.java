@@ -7,13 +7,10 @@ public class Users {
 
     private HashMap<String, String> hashMap;
     private User user;
-    private ArrayList<User> arrayOfUsers;
-
 
     public Users() {
         hashMap = new HashMap<>();
         hashMap.put("Will", "Password");
-        arrayOfUsers = new ArrayList<>();
     }
 
     public String checkHashMap(String login) {
@@ -27,7 +24,6 @@ public class Users {
     public void addUser(String username, String passwordValue) {
         user = new User();
         hashMap.put(username ,passwordValue);
-        arrayOfUsers.add(user);
     }
 
     public User getUser() {
