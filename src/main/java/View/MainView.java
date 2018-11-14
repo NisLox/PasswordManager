@@ -1,8 +1,5 @@
 package View;
 
-import Model.Services.DialogService;
-import Model.Services.IDialogService;
-import Model.Users;
 import ViewModel.MainViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
