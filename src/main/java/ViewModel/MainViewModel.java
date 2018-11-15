@@ -5,11 +5,13 @@ import Model.Services.IDialogService;
 import Model.Users;
 import Model.Helper.Alert;
 import javafx.beans.property.BooleanProperty;
+
 import javafx.beans.property.SimpleBooleanProperty;
 
 public class MainViewModel {
 
     public BooleanProperty loginSuccess = new SimpleBooleanProperty();
+    public BooleanProperty passwordManagerOpen = new SimpleBooleanProperty();
     private String loginText = "";
     private String passwordText = "";
     private Users users;
@@ -29,6 +31,7 @@ public class MainViewModel {
             if (users.checkHashMap(loginText).equals(passwordText)) {
                 Alert.showConfirmationAlert("Access Granted", "Welcome!");
                 loginSuccess.setValue(true);
+                passwordManagerOpen.setValue(true);
                 return true;
             } else {
                 Alert.showErrorAlert("Error", "Error");

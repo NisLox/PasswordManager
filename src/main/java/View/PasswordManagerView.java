@@ -4,12 +4,15 @@ import Model.Helper.Alert;
 import Model.User;
 import Model.Users;
 import Model.Website;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 
 public class PasswordManagerView {
@@ -24,15 +27,28 @@ public class PasswordManagerView {
     public TextField password;
     @FXML
     public TableView tableView;
+    @FXML
+    public Button logout;
 
     private User user;
 
+    private Stage stage;
+
+    private BooleanProperty passwordManagerOpen = new SimpleBooleanProperty();
+
     public void initialize() {
         addButton.setOnAction(e -> addAction());
+        logout.setOnAction(e -> logoutAction());
     }
 
-    public void initData(Users users) {
+    private void logoutAction() {
+        stage.close();
+        passwordManagerOpen.setValue(false);
+    }
+
+    public void initData(Users users, Stage stage) {
         user = users.getUser();
+        this.stage = stage;
         createHeaders();
     }
 

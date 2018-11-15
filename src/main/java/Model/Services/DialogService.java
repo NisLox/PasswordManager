@@ -23,7 +23,7 @@ public class DialogService implements IDialogService {
             e.printStackTrace();
         }
         PasswordManagerView passwordManager = fxmlLoader.getController();
-        passwordManager.initData(users);
+        passwordManager.initData(users, stage);
         stage.show();
     }
 

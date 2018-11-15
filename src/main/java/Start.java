@@ -4,6 +4,8 @@ import Model.Users;
 import View.MainView;
 import ViewModel.MainViewModel;
 import javafx.application.Application;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,6 +16,7 @@ public class Start extends Application {
 
     private IDialogService dialogService = new DialogService();
     private Users users = new Users();
+    private BooleanProperty passwordManagerOpen = new SimpleBooleanProperty();
 
     public static void main(String[] args) {
         launch(args);
@@ -31,7 +34,9 @@ public class Start extends Application {
         }
 
         MainView mainView = fxmlLoader.getController();
+        passwordManagerOpen.setValue(false);
         MainViewModel mainViewModel = new MainViewModel(dialogService, users);
+        passwordManagerOpen.bindBidirectional(mainViewModel.passwordManagerOpen);
         mainView.initData(mainViewModel);
 
         stage.show();
