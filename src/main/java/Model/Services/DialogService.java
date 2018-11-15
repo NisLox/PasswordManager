@@ -2,6 +2,7 @@ package Model.Services;
 
 import Model.Users;
 import View.AddUserView;
+import View.MainView;
 import View.PasswordManagerView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -41,5 +42,20 @@ public class DialogService implements IDialogService {
         addUser.initData(users);
 
         stage.show();
+    }
+
+    @Override
+    public void openLoginScreen(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
+
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        stage.show();
+
     }
 }

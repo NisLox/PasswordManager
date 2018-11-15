@@ -8,4 +8,6 @@ public interface IDialogService {
 
     void openAddUser(Users users);
 
+    void openLoginScreen();
+
 }

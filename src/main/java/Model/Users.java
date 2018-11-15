@@ -1,11 +1,15 @@
 package Model;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+
 import java.util.HashMap;
 
 public class Users {
 
     private HashMap<String, String> hashMap;
     private User user;
+    public BooleanProperty passwordManagerOpen = new SimpleBooleanProperty();
 
     public Users() {
         hashMap = new HashMap<>();

@@ -30,8 +30,6 @@ public class MainView {
 
     public void initData(MainViewModel mainViewModel) {
         this.mainViewModel = mainViewModel;
-
-
         listenersAndBinds();
     }
 

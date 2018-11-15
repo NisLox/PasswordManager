@@ -8,6 +8,7 @@ import javafx.beans.property.BooleanProperty;
 
 import javafx.beans.property.SimpleBooleanProperty;
 
+
 public class MainViewModel {
 
     public BooleanProperty loginSuccess = new SimpleBooleanProperty();
@@ -20,6 +21,7 @@ public class MainViewModel {
     public MainViewModel(IDialogService dialogService, Users users) {
         this.dialogService = (DialogService) dialogService;
         this.users = users;
+        listeners();
     }
 
     public boolean loginAction() {
@@ -55,5 +57,18 @@ public class MainViewModel {
 
     public void openPasswordManager() {
         dialogService.openPasswordManager(users);
+    }
+
+    private void openLoginView(){
+        dialogService.openLoginScreen();
+    }
+
+    private void listeners(){
+        passwordManagerOpen.bindBidirectional(users.passwordManagerOpen);
+       passwordManagerOpen.addListener((observable, oldValue, newValue) -> {
+           if (!newValue) {
+               openLoginView();
+           }
+       });
     }
 }

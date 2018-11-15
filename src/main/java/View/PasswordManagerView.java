@@ -39,6 +39,7 @@ public class PasswordManagerView {
     public void initialize() {
         addButton.setOnAction(e -> addAction());
         logout.setOnAction(e -> logoutAction());
+        passwordManagerOpen.setValue(true);
     }
 
     private void logoutAction() {
@@ -50,6 +51,8 @@ public class PasswordManagerView {
         user = users.getUser();
         this.stage = stage;
         createHeaders();
+
+        passwordManagerOpen.bindBidirectional(users.passwordManagerOpen);
     }
 
 
@@ -76,4 +79,5 @@ public class PasswordManagerView {
 
         tableView.getColumns().addAll(websiteCol, usernameCol, passwordCol);
     }
+
 }
