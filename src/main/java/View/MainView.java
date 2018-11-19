@@ -35,7 +35,7 @@ public class MainView {
 
     private void loginAction() {
         if (mainViewModel.loginAction()) {
-            Stage stage = (Stage) button.getScene().getWindow();
+            Stage stage = (Stage) button.getScene( ).getWindow();
             stage.close();
         }
     }

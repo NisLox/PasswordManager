@@ -14,6 +14,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.nio.charset.Charset;
+import java.util.Random;
+
 
 public class PasswordManagerView {
 
@@ -29,6 +32,8 @@ public class PasswordManagerView {
     public TableView tableView;
     @FXML
     public Button logout;
+    @FXML
+    public Button createPassword;
 
     private User user;
 
@@ -36,9 +41,13 @@ public class PasswordManagerView {
 
     private BooleanProperty passwordManagerOpen = new SimpleBooleanProperty();
 
+    private int count = 0;
+    private String generatedString;
+
     public void initialize() {
         addButton.setOnAction(e -> addAction());
         logout.setOnAction(e -> logoutAction());
+        createPassword.setOnAction(e -> createPasswordAction());
         passwordManagerOpen.setValue(true);
     }
 
@@ -60,6 +69,9 @@ public class PasswordManagerView {
         if (website.getText().equals("") || username.getText().equals("") || username.getText().equals("")) {
             Alert.showErrorAlert("Insufficient Data Entered", "Please complete all fields");
         } else {
+            if (user == null) {
+                user = new User();
+            }
             user.addWebsite(website.getText(), username.getText(), password.getText());
             website.clear();
             username.clear();
@@ -80,4 +92,14 @@ public class PasswordManagerView {
         tableView.getColumns().addAll(websiteCol, usernameCol, passwordCol);
     }
 
+    private void createPasswordAction() {
+        count++;
+        password.setText(createRandomString());
+    }
+
+    private String createRandomString(){
+        byte [] array = new byte[7];
+        new Random().nextBytes(array);
+        return generatedString = new String(array, Charset.forName("UTF-8"));
+    }
 }

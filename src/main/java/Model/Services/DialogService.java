@@ -2,7 +2,6 @@ package Model.Services;
 
 import Model.Users;
 import View.AddUserView;
-import View.MainView;
 import View.PasswordManagerView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -54,8 +53,6 @@ public class DialogService implements IDialogService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         stage.show();
-
     }
 }
