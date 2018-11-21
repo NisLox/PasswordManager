@@ -14,8 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.nio.charset.Charset;
-import java.util.Random;
+import java.util.UUID;
 
 
 public class PasswordManagerView {
@@ -29,7 +28,7 @@ public class PasswordManagerView {
     @FXML
     public TextField password;
     @FXML
-    public TableView tableView;
+    public TableView<Website> tableView;
     @FXML
     public Button logout;
     @FXML
@@ -41,14 +40,12 @@ public class PasswordManagerView {
 
     private BooleanProperty passwordManagerOpen = new SimpleBooleanProperty();
 
-    private int count = 0;
-    private String generatedString;
-
     public void initialize() {
         addButton.setOnAction(e -> addAction());
         logout.setOnAction(e -> logoutAction());
         createPassword.setOnAction(e -> createPasswordAction());
         passwordManagerOpen.setValue(true);
+        
     }
 
     private void logoutAction() {
@@ -81,25 +78,25 @@ public class PasswordManagerView {
     }
 
     private void createHeaders() {
-        TableColumn websiteCol = new TableColumn("Website");
-        TableColumn usernameCol = new TableColumn("Username");
-        TableColumn passwordCol = new TableColumn("Password");
+        TableColumn<Website, String> websiteCol = new TableColumn<>("Website");
+        TableColumn<Website, String> usernameCol = new TableColumn<>("Username");
+        TableColumn<Website, String> passwordCol = new TableColumn<>("Password");
 
-        websiteCol.setCellValueFactory(new PropertyValueFactory<Website, String>("Website"));
-        usernameCol.setCellValueFactory(new PropertyValueFactory<Website, String>("Username"));
-        passwordCol.setCellValueFactory(new PropertyValueFactory<Website, String>("Password"));
+        websiteCol.setCellValueFactory(new PropertyValueFactory<>("Website"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<>("Username"));
+        passwordCol.setCellValueFactory(new PropertyValueFactory<>("Password"));
 
         tableView.getColumns().addAll(websiteCol, usernameCol, passwordCol);
     }
 
     private void createPasswordAction() {
-        count++;
         password.setText(createRandomString());
     }
 
     private String createRandomString(){
-        byte [] array = new byte[7];
-        new Random().nextBytes(array);
-        return generatedString = new String(array, Charset.forName("UTF-8"));
-    }
+        String uuid = UUID.randomUUID().toString();
+        uuid = uuid.replace("-","");
+        return  uuid.substring(0, Math.min(uuid.length(), 13));
+        }
+
 }
